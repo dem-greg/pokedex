@@ -1,0 +1,51 @@
+form {
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+    width: auto;
+    margin-right: 30px;
+}
+.error_name{
+    border: 2px red solid;
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+@keyframes slidein {
+    0%, 50%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 30% {
+        transform: rotate(-1deg);
+    }
+    20%, 40% {
+        transform: rotate(1deg);
+    }
+
+}
+form input {
+    background-image: url("../../../assets/images/search.svg");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    width: 250px;
+    height: 42px;
+    padding-left: 15px;
+    border-radius: 42px;
+    outline: none;
+    position: relative;
+    transition: .3s linear;
+
+}
+
+form input:focus {
+    background: white;
+    width: 400px;
+}
+.btn_find {
+    display: none;
+}
+@media (max-width: 1100px) {
+    form {
+        justify-content: center;
+    }
+}

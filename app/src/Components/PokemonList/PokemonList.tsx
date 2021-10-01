@@ -2,9 +2,8 @@ import React from 'react';
 import PokemonCard from "./PokemonCard/PokemonCard";
 import "./PokemonList.css"
 import PaginatorContainer from "./Paginator/PaginatorContainer";
-import PokemonSearchFormContainer from "./PokemonSearchForm/PokemonSearchFormContainer";
-import FilterContainer from "./Filter/FilterContainer";
 import { pokemonType } from '../../Types/Type';
+
 
 
 type PropsType = {
@@ -12,6 +11,7 @@ type PropsType = {
     searchHistory: Array<pokemonType>
     isShowPaginator: boolean
     onDeleteFindPokemon: ()=> void
+
 }
 
 let PokemonList: React.FC<PropsType> = ({pokemonInfo,isShowPaginator, searchHistory,  onDeleteFindPokemon})=> {
@@ -31,13 +31,8 @@ let PokemonList: React.FC<PropsType> = ({pokemonInfo,isShowPaginator, searchHist
                                              specialDefense={p.stats[4].base_stat}
                                              speed={p.stats[5].base_stat}/>)
  }
-
-
-
     return (<div>
-            <PokemonSearchFormContainer />
-            <FilterContainer />
-            {searchHistory.length > 0 && <div className="found_border">
+            {searchHistory.length > 0  &&  <div className="found_border">
                 <h1>Found Pokemon:</h1>
                 <div className="container">
                     {onMapping(searchHistory)}
@@ -47,7 +42,6 @@ let PokemonList: React.FC<PropsType> = ({pokemonInfo,isShowPaginator, searchHist
                 }}> close
                 </button>
             </div>}
-
             <div className="container">
                 {onMapping(pokemonInfo)}
             </div>

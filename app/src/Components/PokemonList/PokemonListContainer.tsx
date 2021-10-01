@@ -8,6 +8,8 @@ import {
 } from "../../Redux/pokedexReducer";
 import {AppStateType} from "../../Redux/store";
 import {pokemonListType, pokemonType} from "../../Types/Type";
+import Preloader from "../Preloader/preloader";
+
 
 
 type MapStateToPropsType = {
@@ -15,6 +17,7 @@ type MapStateToPropsType = {
     searchHistory: Array<pokemonType>
     pokemonList: Array<pokemonListType>
     isShowPaginator: boolean
+    isLoading: boolean
 }
 
 type MapDispatchToPropsType = {
@@ -42,13 +45,12 @@ class PokemonListContainer extends React.Component<PropsType> {
 
 
     render() {
+        if(this.props.isLoading){
+            return <Preloader />
+        }
 
         return (
-
-            <div>
-                <PokemonList {...this.props} onDeleteFindPokemon={this.onDeleteFindPokemon}/>
-
-            </div>
+             <PokemonList {...this.props} onDeleteFindPokemon={this.onDeleteFindPokemon}/>
         );
     }
 }
@@ -58,7 +60,8 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         pokemonInfo: state.pokedex.pokemon,
         pokemonList: state.pokedex.pokemonListData,
         searchHistory: state.pokedex.searchHistory,
-        isShowPaginator: state.pokedex.isShowPaginator
+        isShowPaginator: state.pokedex.isShowPaginator,
+        isLoading: state.pokedex.isLoading
     }
 
 }

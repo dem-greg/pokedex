@@ -15,7 +15,8 @@ let initialState = {
     typesData: [] as Array<{ name: string }>,
     activeFilter: [] as Array<{ type: string }>,
     errorBySearch: false as boolean,
-    isShowPaginator: true as boolean
+    isShowPaginator: true as boolean,
+    isLoading: false as boolean,
 
 }
 
@@ -25,12 +26,7 @@ const pokedexReducer = (state = initialState, action: ActionsType): initialState
     switch (action.type) {
 
 
-        case "TOGGLE_SHOW_PAGINATOR": {
-            return {
-                ...state,
-                isShowPaginator: action.payload
-            }
-        }
+
         case "SET_POKEMON": {
             return {
                 ...state,
@@ -45,6 +41,21 @@ const pokedexReducer = (state = initialState, action: ActionsType): initialState
 
             }
         }
+
+        case "TOGGLE_LOADING": {
+            return {
+                ...state,
+                isLoading: action.payload
+            }
+        }
+        case "TOGGLE_SHOW_PAGINATOR": {
+            return {
+                ...state,
+                isShowPaginator: action.payload
+            }
+        }
+
+
         case "RESET_POKEMON_INFO": {
             return {
                 ...state,
@@ -86,7 +97,7 @@ const pokedexReducer = (state = initialState, action: ActionsType): initialState
         }
         case "DEL_ACTIVE_FILTER": {
             return {
-                ...state, activeFilter: state.activeFilter.filter(item => item.type !== action.payload),
+                ...state, activeFilter: state.activeFilter.filter(item => item.type !== action.payload)
 
             }
         }
@@ -103,6 +114,7 @@ const pokedexReducer = (state = initialState, action: ActionsType): initialState
 export const actions = {
     setPokemon: (pokemon: Array<pokemonListType>) => ({type: "SET_POKEMON", payload: pokemon} as const),
     toggleShowPaginator: (toggle: boolean) => ({type: "TOGGLE_SHOW_PAGINATOR", payload: toggle} as const),
+    toggleLoading: (toggle: boolean) => ({type: "TOGGLE_LOADING", payload: toggle} as const),
     setActiveFilter: (activeFilter: string) => ({type: "SET_ACTIVE_FILTER", payload: activeFilter} as const),
     delActiveFilter: (delFilter: string) => ({type: "DEL_ACTIVE_FILTER", payload: delFilter} as const),
     errorSearch: (error: boolean) => ({type: "ERROR_SEARCH", payload: error} as const),

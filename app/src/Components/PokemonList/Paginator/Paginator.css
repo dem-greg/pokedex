@@ -136,3 +136,14 @@
     color: grey;
     transition-duration: 1s;
 }
+@media (max-width: 1000px) {
+    .btn_more button {
+      width: 30vw;
+        height: 70px;
+    }
+    .paginator_value {
+        min-width: 10vw;
+        height: 10vw;
+    }
+
+}

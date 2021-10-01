@@ -195,11 +195,6 @@
     font-size: 25px;
 }
 
-.photo {
-    width: 200px;
-    height: 200px;
-}
-
 
 .main {
     color: white;
@@ -253,10 +248,59 @@
     text-align: center;
 }
 
+@media (max-width: 1000px) {
+    .card {
+        width: 470px;
+        height: 600px;
+    }
+    .backside div {
+        width: 90%;
+        margin: 15px 0 15px 0;
+    }
+
+  .backside div label{
+       font-size: 25pt;
+   }
+    .backside div progress{
+        width: 90%;
+    }
+
+    .photo {
+        width: 300px;
+        height: 300px;
+    }
+
+    .pokemon_id {
+        font-size: 25pt;
+    }
 
 
 
-/**********************FOUND*****************************/
+
+    .name {
+        font-size: 30pt;
+    }
+
+    .hp {
+        font-size: 20pt;
+    }
+
+    .stats {
+        display: flex;
+        color: white;
+
+    }
+
+    .stats_item {
+        font-size: 20pt;
+    }
+
+    .tag {
+        font-size: 17pt;
+        border-radius: 20px;
+    }
+
+}
 
 
 
